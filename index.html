@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>付佳伟 - 项目经理</title>
+    <style>
+        /* 基础样式 */
+        :root {
+            --primary-color: #00f3ff;
+            --secondary-color: #0066ff;
+            --accent-color: #bc13fe;
+            --bg-dark: #0a0e27;
+            --bg-panel: #111633;
+            --text-main: #e0e6ed;
+            --text-secondary: #94a3b8;
+            --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* 动态背景 */
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary-color);
+            top: -50px;
+            left: -50px;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-color);
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 5s;
+        }
+
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--primary-color);
+            top: 40%;
+            right: 20%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 50px); }
+        }
+
+        /* 容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero区域 */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 80px;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p.subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .profile-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            border: none;
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 243, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .profile-card {
+            background: linear-gradient(145deg, rgba(17, 22, 51, 0.8), rgba(17, 22, 51, 0.6));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            border-radius: 30px;
+            padding: 40px;
+            position: relative;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: var(--gradient);
+            border-radius: 30px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* 模块通用样式 */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .section-title span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* 基本信息 */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .info-card {
+            background: var(--bg-panel);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .info-card h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: var(--text-secondary);
+        }
+
+        .info-value {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* 个人优势 */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .advantage-card {
+            background: var(--bg-panel);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient);
+        }
+
+        .advantage-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 243, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .advantage-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .advantage-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* 工作经历 */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient);
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            padding-left: 50px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--bg-dark);
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-company {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timeline-period {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0, 243, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .projects-tag {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .project-tag {
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* 项目经验 */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--bg-panel);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 10px 40px rgba(0, 102, 255, 0.15);
+        }
+
+        .project-header {
+            padding: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-period {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .project-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+            padding: 25px;
+        }
+
+        .project-role {
+            padding: 15px 25px;
+            background: rgba(0, 243, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-role h4 {
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .project-role p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* 教育背景 */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .edu-card {
+            background: var(--bg-panel);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+        }
+
+        .edu-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .edu-info h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .edu-degree {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .edu-period {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* 联系方式 */
+        .contact {
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-panel) 0%, var(--bg-dark) 100%);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px 0;
+        }
+
+        .contact-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .contact-item a:hover {
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--primary-color);
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-grid .profile-card {
+                max-width: 500px;
+                margin: 40px auto 0;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .profile-card {
+                margin: 40px auto 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .advantages-grid,
+            .info-grid,
+            .education-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 38px;
+            }
+
+            .project-card h3 {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* 技术栈 */
+        .tech-stack {
+            padding: 60px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态背景 -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <!-- 导航 -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">付佳伟<span style="color:var(--primary-color)">|</span>PROFILE</div>
+            <div class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#profile">个人信息</a>
+                <a href="#advantages">个人优势</a>
+                <a href="#experience">工作经历</a>
+                <a href="#projects">项目经验</a>
+                <a href="#education">教育背景</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero区域 -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="profile-badge">
+                    <div class="status-dot"></div>
+                    <span>当前状态: 离职-正在找工作</span>
+                </div>
+                <h1>付佳伟<br><span>14年IT项目管理经验</span></h1>
+                <p class="subtitle">
+                    专注于产品策划、需求分析及项目管理领域<br>
+                    具备从前期调研、需求分析、方案设计、原型输出到项目实施交付的全流程管理能力
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">立即联系</a>
+                    <a href="#projects" class="btn btn-secondary">查看项目</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <h3 style="margin-bottom:25px;color:var(--primary-color)">职业概览</h3>
+                    <div class="info-item">
+                        <span class="info-label">求职意向</span>
+                        <span class="info-value">IT项目经理、需求分析师、AI产品经理</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">工作年限</span>
+                        <span class="info-value">14年</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">学历</span>
+                        <span class="info-value">本科学历</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"> 目前</span>
+                        <span class="info-value" style="color:var(--primary-color)">职场进阶中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 个人信息 -->
+    <section class="section" id="profile">
+        <div class="container">
+            <h2 class="section-title">基本信息 <span>Basic Information</span></h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> 个人资料</h3>
+                    <div class="info-item">
+                        <span class="info-label">姓名</span>
+                        <span class="info-value">付佳伟</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">性别</span>
+                        <span class="info-value">男</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">年龄</span>
+                        <span class="info-value">37岁</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">居住地</span>
+                        <span class="info-value">辽宁省沈阳市</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-2.18a2 2 0 0 1 2-2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 19.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> 联系方式</h3>
+                    <div class="info-item">
+                        <span class="info-label">联系电话</span>
+                        <span class="info-value">188-****-1212</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">电子邮箱</span>
+                        <span class="info-value">wyfjw212@163.com</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">求职场景</span>
+                        <span class="info-value">全职/远程</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">希望城市</span>
+                        <span class="info-value">沈阳</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 个人优势 -->
+    <section class="section" id="advantages">
+        <div class="container">
+            <h2 class="section-title">个人优势 <span>Core Competencies</span></h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    </div>
+                    <h3>全流程管理</h3>
+                    <p>13年信息化行业从业经验,专注于产品策划、需求分析及项目管理领域,具备从前期调研、需求分析、方案设计、原型输出、需求文档编制到项目实施交付的全流程管理能力。</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                    </div>
+                    <h3>项目交付能力</h3>
+                    <p>先后参与并主导多个省级及国家级政务信息化项目,具备良好的项目过程控制与成果交付能力,能有效保障项目质量与进度。</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <h3>跨部门协同</h3>
+                    <p>深入了解政务系统多级管理架构,具备跨部门、跨区域、多角色协同推进项目的实战经验,能高效推动多方资源联动。</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </div>
+                    <h3>团队管理能力</h3>
+                    <p>具备较强的沟通协调能力与团队管理能力,工作作风稳健务实,执行力与责任感强,能够在复杂环境下推动项目高效落地。</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <h3>技术前瞻性</h3>
+                    <p>关注大模型与智能化技术在政务及数据类项目中的应用方向,具备一定的技术理解力和前瞻性思维,能够适应新技术融合背景下的信息化项目建设需求。</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    </div>
+                    <h3>专业工具熟练</h3>
+                    <p>熟练使用Office、Visio、Axure RP、MindManager等工具开展产品与项目管理工作,提升需求管理与交付效率。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作经历 -->
+    <section class="section" id="experience">
+        <div class="container">
+            <h2 class="section-title">工作经历 <span>Work Experience</span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>上海元方科技有限公司</h3>
+                    <div class="timeline-company">IT项目经理</div>
+                    <span class="timeline-period">2019.05 - 2026.02</span>
+                    <div class="timeline-content">
+                        <p>负责省级及国家级政务信息化项目的全过程管理工作,组织制定项目实施计划,统筹协调内外部资源,对项目进度、质量、成本及风险进行系统化管控,确保项目规范、有序推进并按期交付。</p>
+                        <p>参与项目售前与方案阶段工作,协同商务团队开展客户需求调研与技术方案设计,并负责从需求分析、功能设计、系统开发到项目验收的整体交付管理。</p>
+                        <p>承担辽宁、重庆等多个区域政企信息化项目的实施与交付支持工作,协调研发、测试及客户团队,保障跨区域项目在统一标准下稳定落地。</p>
+                        <p>负责项目团队的组建、分工与日常管理,建立并持续优化项目管理制度与协作机制,提升团队执行效率与项目交付质量。</p>
+                    </div>
+                    <div class="projects-tag">
+                        <span class="project-tag">税收信息化</span>
+                        <span class="project-tag">智慧城市</span>
+                        <span class="project-tag">教育数据</span>
+                        <span class="project-tag">大数据分析</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>沈阳东深科技有限公司</h3>
+                    <div class="timeline-company">产品经理</div>
+                    <span class="timeline-period">2017.12 - 2019.04</span>
+                    <div class="timeline-content">
+                        <p>负责"共青团第二课堂成绩单平台"的整体产品规划与设计工作,系统开展业务调研与需求分析,完成原型设计及产品需求文档编制。</p>
+                        <p>负责大学生云成长一体化大数据平台的产品规划与功能设计,主导需求分析与文档输出,明确产品建设目标与阶段性实施重点。</p>
+                        <p>统筹产品开发与版本迭代全流程,负责资源协调与进度管理,组织设计、研发、测试等团队协同推进,并对产品上线质量进行验收。</p>
+                        <p>配合市场与运营部门,参与产品宣传、推广及用户培训工作,推动产品在高校场景中的落地应用。</p>
+                    </div>
+                    <div class="projects-tag">
+                        <span class="project-tag">教育信息化</span>
+                        <span class="project-tag">大数据平台</span>
+                        <span class="project-tag">学生成长</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>早期工作经历</h3>
+                    <div class="timeline-company">产品经理</div>
+                    <span class="timeline-period">2012.07 - 2017.12</span>
+                    <div class="timeline-content">
+                        <p>在百荣世贸期间,负责电商平台需求调研、内容维护、推广活动策划及数据统计分析工作,为平台运营优化与业务调整提供数据支持。</p>
+                        <p>在北京金和网络期间担任产品经理,负责"金和IU APP"自助工厂电商模块的规划与迭代建设,完成需求分析、原型设计及产品需求文档编制工作,并对项目进度进行跟踪管理,协调相关资源推动功能上线。</p>
+                        <p>同时负责产品宣传方案与培训资料编制,形成覆盖运营与产品的综合性工作经验。</p>
+                    </div>
+                    <div class="projects-tag">
+                        <span class="project-tag">电商平台</span>
+                        <span class="project-tag">电商系统</span>
+                        <span class="project-tag">B2B应用</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目经验 -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">项目经验 <span>Project Experience</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2025.03 - 2025.08</div>
+                        <h3>鞍山市烟草公司智能寄存柜系统</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">基于智能存取柜硬件建设,实现留样烟智能分配、柜内状态监控、寄存单自动生成、电子签名及到期提醒等功能。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任项目经理,负责项目整体管理工作,组织展开需求分析与方案设计,协调研发团队、硬件供应商及业务部门,确保系统与硬件设备的稳定集成与功能实现。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2025.01 - 至今</div>
+                        <h3>辽宁省教育厅教育数据分析系统</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">围绕教育数据全流程管理目标建设,构建覆盖省、市、区县、学校四级用户的统计报表与审核体系。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任项目经理,负责项目需求管理、进度计划制定与执行跟踪,组织跨层级、跨部门成员协同推进项目实施,统筹系统验收及用户培训工作。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2024.12 - 2025.06</div>
+                        <h3>营口市税务局绩效考核管理系统</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">项目建设绩效管理与绩效考核两大系统,实现从绩效指标制定、考核过程管理到绩效发放与统计分析的全流程信息化管理。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任项目经理,负责项目进度与质量控制,协调需求、研发、设计及实施团队推进系统建设,定期与客户沟通项目进展,确保项目顺利交付。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2024.04 - 2025.03</div>
+                        <h3>辽宁省工信厅智慧管理平台考核系统</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">工作考核系统是省工信厅智慧管理平台的重要组成部分,系统集成督查考核、督办管理、考核指标、重点工作及事项管理模块。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任项目经理,负责系统全流程交付管理,组织需求调研、方案设计、用户培训及上线实施工作,持续跟踪系统运行情况,保障系统稳定运行。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2024.04 - 2025.03</div>
+                        <h3>阜新市烟草局货源投放预测项目</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">系统通过整合多源数据资源,构建基于核心指标的货源属性评价模型(ABC货源投放模型),实现数据处理、指标分析、投放策略生成及市场状态模拟。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任项目经理,全面负责项目交付工作,组织需求分析与方案设计,协调多方团队推进系统开发、测试与上线实施,确保项目按计划完成。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2023.05 - 2023.10</div>
+                        <h3>化龙桥街道党建云平台项目</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">平台涵盖愿望服务管理、党务工作管理、党建联盟能力、党员管理及党建分析展示等功能,支持PC端与移动端使用。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任项目经理,负责项目组织实施与交付管理,协调内部团队推进系统建设,并配合完成项目汇报与交付工作。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2023.02 - 2024.04</div>
+                        <h3>清River重庆建设廉洁生态监管评估项目</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">项目主要包括政治生态评估、清River重庆建设、政治生态评估分析大屏等子系统,实现日常监管、指标管理、扣分预警、生态加减分、生态报告管理等功能。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任项目经理,负责项目进度与质量管理,协调内部团队完成系统建设,并协助完成技术方案编制工作。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2023.02 - 2024.04</div>
+                        <h3>重庆市经济·智慧城市项目</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">项目包括重大战略、督查督办、效能评估、任务协同和分析研判等子系统,实现重点工作任务分解、落实、反馈和批示等管理功能。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任项目经理,负责项目实施管理与客户沟通,引导需求合理收口,保障项目有序推进,并协助完成技术方案编制工作。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2022.02 - 2023.02</div>
+                        <h3>辽宁省督查考核一体化平台</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">项目是二期改版升级项目,主要对绩效考核、督查督办和内部办公3个子系统的业务流程、用户操作以及页面展示进行改版升级,同时开发手机移动端。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任项目经理,负责项目进度与质量管理,协调团队完成系统建设与交付。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2021.10 - 2022.10</div>
+                        <h3>北京市通州区绩效管理信息化项目</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">项目包括绩效考核、巡视考核、述职评议和内部办公4个子系统,实现指标体系、绩效任务、考核细则的制定、调整、阶段性反馈和年终评分等全流程管理。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任项目经理,负责项目实施管理与客户沟通,定期汇报项目进展,推进项目验收。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2020.10 - 2021.10</div>
+                        <h3>国家税务总局党建云平台项目</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">党建云平台是税务总局2020年重点项目,是"金税四期""党建政事业务"三位一体规划的重要组成部分,集成党建、党务、纪检、监察、文明建设等多种业务的综合性工作平台。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任高级需求顾问,负责需求调研与需求分析工作,协调开发团队推进系统建设,并参与验收资料编制与验收推进工作。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2019.08 - 2020.08</div>
+                        <h3>贵港市智慧绩效管理平台项目</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">项目主要实现贵港市对市直部门、区县的绩效全流程考核管理,包括指标分解、过程考核和年度考核等功能,并与省级系统对接。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任项目经理,主要负责把控项目进度及质量,对内协调需求、开发、美工、实施等成员完成项目建设,并进行项目验收文档的撰写。同时,协助销售进行项目汇报,推进项目交付。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2018.12 - 2019.04</div>
+                        <h3>大学生云成长一体化大数据平台</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">大学生云成长一体化大数据平台主要实现大学生从入学到离校全流程的服务与管理,平台包括迎新系统、招生系统、学生管理系统、学生助学系统等13个子系统。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任产品经理,负责产品的规划与功能设计,主导需求分析与文档输出,明确产品建设目标与阶段性实施重点,统筹产品开发与版本迭代全流程。</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-period">2017.12 - 2019.04</div>
+                        <h3>共青团第二课堂成绩单平台</h3>
+                        <p class="project-card-p" style="padding:0 0 15px 0;margin:0;">第二课堂成绩单平台主要服务于大学生,客观地记录学生在校期间参加的各项活动、从事的团学工作和取得的各类成绩,学生可报名并参与学校内的各类活动。</p>
+                    </div>
+                    <div class="project-role">
+                        <h4>项目职责:</h4>
+                        <p>担任产品经理,负责产品的整体产品规划与设计工作,系统开展业务调研与需求分析,完成原型设计及产品需求文档编制。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section class="section" id="education">
+        <div class="container">
+            <h2 class="section-title">教育背景 <span>Education</span></h2>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <div class="edu-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    </div>
+                    <div class="edu-info">
+                        <h3>郑州大学</h3>
+                        <div class="edu-degree">应用物理学 | 本科学历</div>
+                        <div class="edu-period">2008.09 - 2012.06</div>
+                    </div>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2s-2 3-2 8v10a4 4 0 0 0 4 4h16a4 4 0 0 0 4-4V11s-2-8-4-8z"></path><line x1="12" y1="7" x2="12" y2="13"></line><line x1="6" y1="13" x2="18" y2="13"></line></svg>
+                    </div>
+                    <div class="edu-info">
+                        <h3>高级网络营销师</h3>
+                        <div class="edu-degree">自我学习与实践</div>
+                        <div class="edu-period">持续学习 IT 技术趋势</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="section contact" id="contact">
+        <div class="container contact-content">
+            <h2>期待与您合作</h2>
+            <p style="color:var(--text-secondary);font-size:18px;margin-bottom:40px;">
+                感谢您查看我的个人主页<br>
+                如果您有任何合作意向,欢迎随时联系我
+            </p>
+            <div class="contact-info">
+                <a href="tel:18811401212">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-2.18a2 2 0 0 1 2-2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 19.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    188-****-1212
+                </a>
+                <a href="mailto:wyfjw212@163.com">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    wyfjw212@163.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer style="background:var(--bg-panel);padding:40px 0;text-align:center;color:var(--text-secondary);">
+        <div class="container">
+            <p>© 2026 付佳伟 | IT项目管理专家 |辽ICP备xxxxxxx号</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 导航背景滚动效果
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(10, 14, 39, 0.95)';
+            } else {
+                nav.style.background = 'rgba(10, 14, 39, 0.8)';
+            }
+        });
+
+        // 元素进入视口动画
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.info-card, .advantage-card, .timeline-item, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
